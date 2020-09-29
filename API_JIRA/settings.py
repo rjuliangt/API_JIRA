@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,9 +35,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'apps.user',
     'apps.task',
 ]
+
+# Configuartion of Rest Framework Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'API_JIRA.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -82,11 +90,10 @@ DATABASES = {
         'HOST': 'ec2-54-166-251-173.compute-1.amazonaws.com',
         'PORT': 5432,
         'NAME': 'd8s7kih5obnp62',
-        'USER':  'apkzrzhwnphvzh',
+        'USER': 'apkzrzhwnphvzh',
         'PASSWORD': '57d995a6c7c78956ba639ca38ad60ab36a0eff4f234f7440519836703fe84730',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -106,20 +113,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# configuration of lenguage code to es-gt (spanish-guatemala)
+LANGUAGE_CODE = 'es-gt'
 
-TIME_ZONE = 'UTC'
+# configuration of Time zone to America - Guatemala
+TIME_ZONE = 'America/Guatemala'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

@@ -7,5 +7,4 @@ urlpatterns = [
     path('task/', TaskView.as_view()),
     path('task/<int:fk>', TaskViewDetail.as_view()),
     path('user/', UserView.as_view()),
-    # path('user_by_role/', UserByRolesView.as_view()),
 ]
