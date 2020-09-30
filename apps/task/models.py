@@ -1,6 +1,5 @@
 # Django imports for create models
 from django.db import models
-from apps.user.models import User
 
 
 # Create the model for Jira tasks
@@ -18,8 +17,9 @@ class Task(models.Model):
     task_name = models.CharField(max_length=100)
     status = models.CharField(default='To Do', choices=STATUS_OPTIONS, max_length=10)
     create_date = models.DateField(auto_now_add=True)
-    fk_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    owner = models.ForeignKey('auth.User', related_name='tasks', on_delete=models.CASCADE)
+    fk_user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True,
+                                related_name='manage_tasks')
+    owner = models.ForeignKey('auth.User', related_name='user_task_create', on_delete=models.CASCADE)
 
     def __str__(self):
         return '{0},{1},{2},{3},{4},{5}'.format(self.id, self.task_name, self.status, self.create_date,

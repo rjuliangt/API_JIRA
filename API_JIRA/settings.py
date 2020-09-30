@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import API_JIRA.db as db
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'apps.user',
     'apps.task',
 ]
 
@@ -85,16 +84,7 @@ WSGI_APPLICATION = 'API_JIRA.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'ec2-54-166-251-173.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'NAME': 'd8s7kih5obnp62',
-        'USER': 'apkzrzhwnphvzh',
-        'PASSWORD': '57d995a6c7c78956ba639ca38ad60ab36a0eff4f234f7440519836703fe84730',
-    }
-}
+DATABASES = db.POSTGRESQL
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
