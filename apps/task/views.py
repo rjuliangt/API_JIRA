@@ -2,7 +2,6 @@
 Creation of all CRUD view and function of
 the Task model
 """
-from rest_framework.templatetags.rest_framework import data
 
 from .models import Task
 from .serializers import TaskSerializer
