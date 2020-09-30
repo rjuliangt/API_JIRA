@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'apps.task',
-    'apps.user',
+    # 'apps.user',
 ]
 
 # Configuartion of Rest Framework Authentication
