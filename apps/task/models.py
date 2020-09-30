@@ -19,6 +19,8 @@ class Task(models.Model):
     status = models.CharField(default='To Do', choices=STATUS_OPTIONS, max_length=10)
     create_date = models.DateField(auto_now_add=True)
     fk_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    owner = models.ForeignKey('auth.User', related_name='tasks', on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{0},{1},{2},{3},{4}'.format(self.id, self.task_name, self.status, self.create_date, self.fk_user)
+        return '{0},{1},{2},{3},{4},{5}'.format(self.id, self.task_name, self.status, self.create_date,
+                                                self.fk_user, self.owner)

@@ -10,7 +10,7 @@ class TaskSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Task
-        fields = ['task_name', 'status', 'create_date', 'fk_user']
+        fields = ['id', 'task_name', 'status', 'create_date', 'fk_user', 'owner']
 
     def create(self, validated_data):
         instance = Task()
@@ -18,6 +18,7 @@ class TaskSerializer(serializers.ModelSerializer):
         instance.status = validated_data.get('status')
         instance.create_date = validated_data.get('create_date')
         instance.fk_user = validated_data.get('fk_user')
+        instance.owner = validated_data.get('owner')
         instance.save()
         return instance
 
@@ -26,6 +27,7 @@ class TaskSerializer(serializers.ModelSerializer):
         instance.status = validated_data.get('status', instance.status)
         instance.create_date = validated_data.get('create_date', instance.create_date)
         instance.fk_user = validated_data.get('fk_user', instance.fk_user)
+        instance.owner = validated_data.get('fk_user', instance.owner)
         instance.save()
         return instance
 
